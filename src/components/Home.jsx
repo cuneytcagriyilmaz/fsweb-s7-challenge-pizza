@@ -18,6 +18,10 @@ const ContainerHome = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  
+  @media screen and (max-width: 768px) {
+    height: 100%; 
+  }
 `;
 
 const ContentContainer = styled.div`

@@ -69,14 +69,11 @@ const Order = () => {
   
     let updatedMaterials;
     if (checked) {
-        // Eğer checkbox işaretlenmişse, malzemeler dizisine yeni malzemeyi ekler
         updatedMaterials = [...pizza.materials, name];
     } else {
-        // Eğer checkbox işaretlenmemişse, ilgili malzemeyi malzemeler dizisinden çıkarır
         updatedMaterials = pizza.materials.filter((material) => material !== name);
     }
 
-    // Yeni pizza durumu oluşturur ve güncellenmiş malzemeleri içerir
     setPizza((prevPizza) => ({
       ...prevPizza,
       materials: updatedMaterials,
