@@ -7,29 +7,36 @@ const ResultContainer = styled.div`
   font-family: "Barlow", sans-serif;
   text-align: center;
   padding: 20px;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
+  font-size: 2rem;
   margin-bottom: 10px;
   margin-top: 20px;
 `;
 
 const Paragraph = styled.p`
-  font-size: 25px;
+  font-size: 2rem; 
   line-height: 1.5;
   font-family: "Roboto Condensed", sans-serif;
-
 `;
 
 const CenterDiv = styled.div`
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1; 
 `;
 
 function Result() {
@@ -43,5 +50,4 @@ function Result() {
     </ResultContainer>
   );
 }
-
 export default Result;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const PizzaOptionsContainer = styled.div`
   display: flex;
@@ -10,13 +10,17 @@ const PizzaOptionsContainer = styled.div`
   }
 `;
 
+const ErrorMessage = styled.span`
+  color: red;
+`;
+
 const PizzaOptions = ({ pizza, handleChange }) => {
-  const [showWarning, setShowWarning] = useState(false);
+  const [showError, setShowError] = useState(false);
   useEffect(() => {
     if (pizza.size && pizza.doughThickness) {
-      setShowWarning(false);
+      setShowError(false);
     } else {
-      setShowWarning(true);
+      setShowError(true);
     }
   }, [pizza]);
 
@@ -24,7 +28,7 @@ const PizzaOptions = ({ pizza, handleChange }) => {
     <PizzaOptionsContainer>
       <div className="boyut-secim">
         <h4>
-          Boyut Seç {showWarning && <span style={{ color: "red" }}>*</span>}
+          Boyut Seç {showError && <ErrorMessage>*</ErrorMessage>}
         </h4>
         <div>
           <label>
@@ -65,7 +69,7 @@ const PizzaOptions = ({ pizza, handleChange }) => {
       </div>
       <div className="hamur-secim">
         <h4>
-          Hamur Seç {showWarning && <span style={{ color: "red" }}>*</span>}
+          Hamur Seç {showError && <ErrorMessage>*</ErrorMessage>}
         </h4>
         <select
           name="doughThickness"

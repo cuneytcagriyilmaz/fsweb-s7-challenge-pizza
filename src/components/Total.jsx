@@ -10,12 +10,21 @@ const TotalContainer = styled.div`
   .counter-div {
     flex-grow: 1;
   }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column; // Küçük ekranlarda sütun şeklinde düzenle
+    align-items: stretch;
+  
+    .counter-div {
+      margin-bottom: 20px; // Küçük ekranlar arasındaki boşluğu ayarla
+    }
+  }
 `;
 
 const OrderDetails = styled.div`
   border: 1px solid #5F5F5F;
-  padding: 10px;
-  
+  padding: 10px;  
 `;
 
 const OrderButton = styled.button`
@@ -29,8 +38,7 @@ const OrderButton = styled.button`
     } else {
       return "pointer";
     }
-  }};
-  
+  }};  
 `;
 
 const Total = ({ total, totalMaterials, handleSubmit, isButtonDisabled }) => {
@@ -51,7 +59,7 @@ const Total = ({ total, totalMaterials, handleSubmit, isButtonDisabled }) => {
         <p>Seçimler: {totalMaterials * counterValue} TL</p>
         <p>Toplam: {total * counterValue} TL</p>
         <OrderButton className="order-button" type="submit" disabled={isButtonDisabled()} onClick={handleSubmit}>
-          Siparişi Tamamla
+          SİPARİŞ VER
         </OrderButton>
       </OrderDetails>
     </TotalContainer>

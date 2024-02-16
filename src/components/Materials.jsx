@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const MaterialsContainer = styled.div`
@@ -36,6 +36,10 @@ const MaterialsContainer = styled.div`
     list-style-type: none;
     padding-left: 0;
   }
+
+  .error-message {
+    color: red;
+  }
 `;
 
 const Materials = ({ pizza, handleMaterialsChange }) => {
@@ -55,6 +59,21 @@ const Materials = ({ pizza, handleMaterialsChange }) => {
     "Kabak"
   ];
 
+  const [showError, setShowError] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    const { checked } = e.target;
+    const selectedMaterialsCount = pizza.materials.length + (checked ? 1 : -1);
+
+    if (selectedMaterialsCount < 4 || selectedMaterialsCount > 10) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+    }
+
+    handleMaterialsChange(e);
+  };
+
   return (
     <MaterialsContainer>
       <div className="materials">
@@ -68,13 +87,14 @@ const Materials = ({ pizza, handleMaterialsChange }) => {
                 name={material}
                 id={material}
                 checked={pizza.materials.includes(material)}
-                onChange={handleMaterialsChange}
+                onChange={handleCheckboxChange}
               />
               <label htmlFor={material}>{material}</label>
             </li>
           ))}
         </ul>
       </div>
+      {showError && <p className="error-message">Malzemelerden en az 4 en çok 10 tanesini seçmelisiniz.</p>}
     </MaterialsContainer>
   );
 };

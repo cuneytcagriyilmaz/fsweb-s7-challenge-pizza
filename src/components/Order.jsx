@@ -7,28 +7,9 @@ import PizzaOptions from "./PizzaOptions";
 import Materials from "./Materials";
 import OrderNote from "./OrderNote";
 import Total from "./Total";
+import HeaderComponent from "./HeaderComponent";
 
-const Header = styled.header`
-  background-color: #CE2829;
-  padding: 10px;
-  text-align: center;
-  color: white;
-`;
 
-const Nav = styled.nav`
-  text-align: center;
-  margin-right: 200px;
-
-  a {
-    text-decoration: none;
-    color: white;
-
-    &:hover {
-      text-decoration: none;
-      color: white;
-    }
-  }
-`;
 
 const OrderContainer = styled.div`
   display: flex;
@@ -129,17 +110,12 @@ const Order = () => {
   };
 
   const isButtonDisabled = () => {
-    return !(pizza.materials.length >= 4 && pizza.materials.length < 10 && pizza.name.length >= 3 && pizza.size && pizza.doughThickness);
+    return !(pizza.materials.length >= 4 && pizza.materials.length <= 10 && pizza.name.length >= 3 && pizza.size && pizza.doughThickness);
   };
 
   return (
     <>
-      <Header>
-        <h1>Teknolojik Yemekler</h1>
-        <Nav>
-          <Link to="/" style={{ textDecoration: 'none', color: '#D3D3D3' }}>Anasayfa</Link> - <Link to="/order" style={{ textDecoration: 'none', color: 'white' }}> Sipariş Oluştur</Link>
-        </Nav>
-      </Header>
+      <HeaderComponent />
       <OrderContainer>
         <PizzaOrderContainer>
           <PizzaInfo />
